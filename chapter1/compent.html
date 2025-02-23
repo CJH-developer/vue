@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>component</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+</head>
+<body>
+
+    <div id="app">
+        <app-header></app-header>
+        <app-footer></app-footer>
+    </div>
+    
+    <div id="app2">
+        <app-header></app-header>
+        <app-content></app-content>
+        <app-footer></app-footer>
+    </div>
+
+    <script>
+
+
+        new Vue({
+            el: '#app',
+            components:{
+                'app-header' : {
+                    template: '<h1>Header</h1>'
+                },
+                'app-content': {
+                    template: '<div id="app2">test</div>'
+                },
+                'app-footer' : {
+                    template: '<p>footer</p>'
+                }
+            }
+            
+        });
+
+        new Vue({
+            el: '#app2',
+            components: {
+                'app-header' : {
+                    template: '<h1>Header</h1>'
+                },
+                'app-content': {
+                    template: '<div id="app2">test</div>'
+                },
+                'app-footer': {
+                    template: '<p>footer</p>'
+                }
+            }
+        });
+
+    </script>
+</body>
+</html>
