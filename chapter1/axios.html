@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Axios</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <script src="https://unpkg.com/vue-router@3.6.5/dist/vue-router.js"></script>
+    <script src="https://unpkg.com/axios@1.6.7/dist/axios.min.js"></script>
+</head>
+<body>
+    <div id="app">
+        <button v-on:click="getData">get User</button>
+
+        <div>
+            {{users}}
+        </div>
+    </div>
+
+    <script>
+
+        new Vue({
+            el : '#app',
+            data : {
+                users : []
+            },
+            methods:{
+                getData : function(){
+                    var vm = this;
+                    axios.get('https://jsonplaceholder.typicode.com/users/')
+                    .then(function(response){
+                        
+                        vm.users = response.data;
+
+
+
+                        /*
+
+                        // 응답메시지 data 파싱
+                        let userArray = response.data.map(user => user);
+                        console.log("userArray : " + userArray);
+
+                        // 응답메시지 사용자 별 파싱
+                        userArray.forEach(user => {
+                            console.log(`이름 : ${user.name}, 아이디 : ${user.id}`)
+                        }); 
+
+                        console.log(userArray[0].name)
+                        */
+
+                        
+                    })
+                    .catch(function(error){
+                        console.log(error);
+                    });
+                }
+            }
+        });
+
+    </script>
+</body>
+</html>

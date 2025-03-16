@@ -9,49 +9,55 @@
 <body>
 
     <div id="app">
-        <app-header></app-header>
-        <app-footer></app-footer>
+        <app-header v-bind:propsdata="message"></app-header>
+        <app-content v-bind:propsdata="num"></app-content>
     </div>
     
-    <div id="app2">
+    <!-- <div id="app2">
         <app-header></app-header>
         <app-content></app-content>
         <app-footer></app-footer>
-    </div>
+    </div> -->
 
     <script>
 
+        var appHeader = {
+            template: '<h1>{{propsdata}}</h1>',
+            props: ['propsdata']
+        }
+
+        var appContent = {
+            template : '<div>{{propsdata}}</div>',
+            props: ['propsdata']
+        }
 
         new Vue({
             el: '#app',
             components:{
-                'app-header' : {
-                    template: '<h1>Header</h1>'
-                },
-                'app-content': {
-                    template: '<div id="app2">test</div>'
-                },
-                'app-footer' : {
-                    template: '<p>footer</p>'
-                }
+                'app-header' : appHeader,
+                'app-content' : appContent
+            },
+            data : {
+                message : 'hi',
+                num : 10
             }
             
         });
 
-        new Vue({
-            el: '#app2',
-            components: {
-                'app-header' : {
-                    template: '<h1>Header</h1>'
-                },
-                'app-content': {
-                    template: '<div id="app2">test</div>'
-                },
-                'app-footer': {
-                    template: '<p>footer</p>'
-                }
-            }
-        });
+        // new Vue({
+        //     el: '#app2',
+        //     components: {
+        //         'app-header' : {
+        //             template: '<h1>Header</h1>'
+        //         },
+        //         'app-content': {
+        //             template: '<div id="app2">test</div>'
+        //         },
+        //         'app-footer': {
+        //             template: '<p>footer</p>'
+        //         }
+        //     }
+        // });
 
     </script>
 </body>
